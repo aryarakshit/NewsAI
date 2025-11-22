@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+.env
+search_cache.json
+saved_articles.json
+.DS_Store

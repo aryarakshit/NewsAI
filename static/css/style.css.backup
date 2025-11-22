@@ -1,0 +1,114 @@
+    gap: 40px;
+    margin-top: 20px;
+    }
+
+    .article-header {
+        margin-bottom: 30px;
+    }
+
+    .article-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        line-height: 1.2;
+    }
+
+    .article-meta {
+        color: var(--text-secondary);
+        display: flex;
+        gap: 20px;
+        font-size: 0.9rem;
+    }
+
+    .article-body {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.8;
+        white-space: pre-line;
+    }
+
+    .sticky-sidebar {
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+    }
+
+    .ai-insight-card {
+        background: var(--surface-color);
+        border: 1px solid var(--border-color);
+        border-radius: var(--card-radius);
+        padding: 25px;
+        margin-bottom: 20px;
+    }
+
+    .ai-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+    }
+
+    .ai-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .ai-title i {
+        color: var(--accent-color);
+    }
+
+    .stat-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+    }
+
+    .stat-label {
+        color: var(--text-secondary);
+    }
+
+    .stat-value {
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+
+    .pov-list {
+        list-style: none;
+    }
+
+    .pov-item {
+        margin-bottom: 15px;
+        padding-left: 15px;
+        border-left: 2px solid var(--accent-color);
+    }
+
+    .pov-source {
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .pov-text {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .detail-container {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+        }
+    }

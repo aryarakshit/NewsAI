@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="detail-container">
+    <!-- Left Column: Article -->
+    <div class="main-column">
+        <a href="/" class="btn-lime" style="margin-bottom: 20px; padding: 8px 16px; font-size: 0.9rem;">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+
+        <div class="article-header">
+            <h1 class="article-title">{{ article.title }}</h1>
+            <div class="article-meta">
+                <span><i class="fas fa-newspaper"></i> {{ article.source }}</span>
+                <span><i class="fas fa-calendar"></i> {{ article.date if article.date else 'Just now' }}</span>
+            </div>
+        </div>
+
+        <img src="{{ article.image }}" alt="News Image"
+            style="width: 100%; border-radius: var(--card-radius); margin-bottom: 30px; max-height: 400px; object-fit: cover;">
+
+        <div class="tekina-card">
+            <p class="article-body">{{ article.body }}</p>
+            <div style="margin-top: 30px; display: flex; gap: 15px;">
+                <a href="{{ article.url }}" target="_blank" class="btn-lime">Read Full Article <i
+                        class="fas fa-external-link-alt"></i></a>
+                <button id="saveBtn" class="btn-lime"
+                    style="background: var(--surface-color); color: var(--text-primary); border: 1px solid var(--border-color);"
+                    onclick="toggleSave()">
+                    <i class="fas fa-bookmark"></i> <span id="saveText">{{ 'Saved' if is_saved else 'Save' }}</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- POVs Below Article -->
+        <div class="ai-insight-card" style="margin-top: 30px;">
+            <div class="ai-header">
+                <span class="ai-title"><i class="fas fa-users"></i> Perspectives</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                {% for pov in povs %}
+                <div
+                    style="background: var(--bg-color); padding: 20px; border-radius: var(--card-radius); border: 1px solid var(--border-color);">
+                    <span class="pov-source" style="display: block; margin-bottom: 10px;">{{ pov.source_type }}</span>
+                    {% if pov.perspective is iterable and pov.perspective is not string %}
+                    <ul style="list-style: disc; padding-left: 20px; margin-top: 8px; color: var(--text-secondary);">
+                        {% for point in pov.perspective %}
+                        <li class="pov-text" style="margin-bottom: 8px;">{{ point }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="pov-text" style="color: var(--text-secondary);">{{ pov.perspective }}</p>
+                    {% endif %}
+
+                    {% if pov.source_link %}
+                    <!-- Real Source Link -->
+                    <a href="{{ pov.source_link }}" target="_blank" class="pov-link"
+                        style="font-size: 0.75rem; color: var(--accent-color); text-decoration: none; display: block; margin-top: 12px;">
+                        <i class="fas fa-external-link-alt"></i> Read Source
+                    </a>
+                    {% else %}
+                    <!-- Fallback Search Link -->
+                    <a href="https://duckduckgo.com/?q={{ article.title|urlencode }}+{{ pov.source_type|urlencode }}"
+                        target="_blank" class="pov-link"
+                        style="font-size: 0.75rem; color: var(--accent-color); text-decoration: none; display: block; margin-top: 12px;">
+                        <i class="fas fa-search"></i> Find Sources
+                    </a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: AI Insights (Sticky) -->
+    <div class="sticky-sidebar">
+        <!-- AI Summary -->
+        <div class="ai-insight-card">
+            <div class="ai-header">
+                <span class="ai-title"><i class="fas fa-robot"></i> AI Summary</span>
+            </div>
+            <p style="color: var(--text-secondary); margin-bottom: 15px;">{{ analysis.summary }}</p>
+            {% if analysis.key_points %}
+            <ul style="padding-left: 20px; color: var(--text-secondary);">
+                {% for point in analysis.key_points %}
+                <li style="margin-bottom: 8px;">{{ point }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+        <!-- Bias & Trust -->
+        <div class="ai-insight-card">
+            <div class="ai-header">
+                <span class="ai-title"><i class="fas fa-balance-scale"></i> Analysis</span>
+            </div>
+
+            <div class="stat-row">
+                <span class="stat-label">Bias</span>
+                <span class="stat-value" style="color: var(--accent-color);">{{ analysis.bias_label }}</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Tone</span>
+                <span class="stat-value">{{ analysis.tone }}</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Trust Score</span>
+                <span class="stat-value">{{ analysis.trust_score }}%</span>
+            </div>
+
+            <div style="margin-top: 15px; height: 4px; background: #333; border-radius: 2px; position: relative;">
+                {% set bias_percent = (analysis.bias_score - 1) * 10 %}
+                <div
+                    style="position: absolute; left: {{ bias_percent }}%; top: -3px; width: 10px; height: 10px; background: var(--accent-color); border-radius: 50%;">
+                </div>
+            </div>
+            <div
+                style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #555; margin-top: 5px;">
+                <span>Left</span>
+                <span>Right</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function toggleSave() {
+        const btn = document.getElementById('saveBtn');
+        const text = document.getElementById('saveText');
+        // Robust check for saved state
+        const isSaved = text.innerText.trim() === 'Saved';
+
+        let articleData;
+        try {
+            const title = {{ article.title | tojson
+        }};
+    const url = {{ article.url | tojson }};
+    const source = {{ article.source | tojson }};
+    const image = {{ article.image | tojson }};
+    // Handle missing date safely
+    const date = {{ (article.date if article.date else '') | tojson }};
+
+    articleData = { title, url, source, image, date };
+        } catch (e) {
+        console.error("Error preparing article data:", e);
+        return;
+    }
+
+    const endpoint = isSaved ? '/api/remove_news' : '/api/save_news';
+
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(articleData)
+        });
+
+        const result = await response.json();
+
+        if (result.status === 'success') {
+            if (isSaved) {
+                btn.style.background = 'var(--surface-color)';
+                btn.style.color = 'var(--text-primary)';
+                btn.style.borderColor = 'var(--border-color)';
+                text.innerText = 'Save';
+            } else {
+                btn.style.background = 'var(--accent-color)';
+                btn.style.color = 'black';
+                btn.style.borderColor = 'var(--accent-color)';
+                text.innerText = 'Saved';
+            }
+        }
+    } catch (error) {
+        console.error('Error saving news:', error);
+    }
+    }
+</script>
+{% endblock %}
