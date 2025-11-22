@@ -1,42 +1,83 @@
-PROJECT_NAME: News AI App
+# News AI App
 
-ONE_SENTENCE_PITCH: A smart, AI-powered news aggregator that gives you the full picture with real-time perspectives and bias analysis.
+**A smart, AI-powered news aggregator that gives you the full picture with real-time perspectives and bias analysis.**
 
-LONG_DESCRIPTION: 
-In an era of information overload and polarized media, getting the objective truth is harder than ever. News AI App solves this by aggregating the latest headlines and using advanced AI (Gemini) to analyze each story instantly. It doesn't just show you the news; it breaks down the bias, summarizes the key points, and most importantly, finds and presents distinct points of view from real, diverse sources.
+## Description / Overview
+In an era of information overload and polarized media, getting the objective truth is harder than ever. **News AI App** solves this by aggregating the latest headlines and using advanced AI (Gemini) to analyze each story instantly.
 
-This application is designed for news junkies and critical thinkers who want to escape the echo chamber. By automatically fetching related articles from different publishers and synthesizing their perspectives, it empowers users to understand complex stories from multiple angles without opening a dozen tabs.
+It doesn't just show you the news; it breaks down the bias, summarizes the key points, and most importantly, finds and presents distinct points of view from real, diverse sources. This application is designed for news junkies and critical thinkers who want to escape the echo chamber.
 
-LIST_OF_FEATURES: 
-- **AI-Powered Analysis**: Instantly summarizes articles, detects bias, and assigns a trust score.
-- **Real Source Perspectives**: Automatically finds and links to "Conservative", "Progressive", and "Mainstream" articles covering the same topic.
-- **Smart Search**: Fetches the freshest news using DuckDuckGo, with robust fallback strategies to ensure you never see an empty feed.
-- **Save & Curate**: Bookmark important stories to your personal profile for later reading.
-- **Responsive Design**: A modern, "Tekina-style" UI that looks great on desktop and mobile.
+## Demo
+![News AI App Demo](static/demo.png)
 
-TECH_STACK_LIST: Python (Flask), Google Gemini API, DuckDuckGo Search (ddgs), HTML/CSS (Vanilla), JavaScript (Vanilla)
+## Installation
 
-PREREQUISITES: Python 3.9+, pip, A Google Gemini API Key
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/aryarakshit/NewsAI.git
+    cd NewsAI
+    ```
 
-INSTALLATION_STEPS: 
-1. git clone https://github.com/yourusername/news-ai-app.git
-2. cd news-ai-app
-3. python -m venv venv
-4. source venv/bin/activate  # On Windows: venv\Scripts\activate
-5. pip install -r requirements.txt
-6. Create a .env file and add your key: GEMINI_API_KEY=your_api_key_here
+2.  **Create a virtual environment:**
+    ```bash
+    python -m venv venv
+    # Windows
+    venv\Scripts\activate
+    # Mac/Linux
+    source venv/bin/activate
+    ```
 
-USAGE_EXAMPLES: 
-python app.py
-# Then open http://127.0.0.1:5000 in your browser
+3.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-FUTURE_ROADMAP: 
-- User Accounts & Cloud Sync
-- Personalized News Feed based on reading habits
-- Multi-language Support
+4.  **Set up Environment Variables:**
+    Create a `.env` file in the root directory and add your Google Gemini API key:
+    ```env
+    GEMINI_API_KEY=your_api_key_here
+    ```
 
-LICENSE_TYPE: MIT License
+## Usage
 
-YOUR_NAME_AND_CONTACT: Arya R - @aryar_dev
+1.  **Run the application:**
+    ```bash
+    python app.py
+    ```
 
-ANY_ACKNOWLEDGEMENTS: Thanks to the Google Gemini team for the powerful API and the open-source community for the DuckDuckGo search library.
+2.  **Open your browser:**
+    Navigate to `http://127.0.0.1:5000` to start browsing the news.
+
+## Features
+
+*   **AI-Powered Analysis**: Instantly summarizes articles, detects bias, and assigns a trust score.
+*   **Real Source Perspectives**: Automatically finds and links to "Conservative", "Progressive", and "Mainstream" articles covering the same topic.
+*   **Smart Search**: Fetches the freshest news using DuckDuckGo, with robust fallback strategies to ensure you never see an empty feed.
+*   **Save & Curate**: Bookmark important stories to your personal profile for later reading.
+*   **Responsive Design**: A modern, "Tekina-style" UI that looks great on desktop and mobile.
+
+## Tech Stack / Built With
+
+*   **Python (Flask)**: Backend framework.
+*   **Google Gemini API**: AI analysis and content generation.
+*   **DuckDuckGo Search (ddgs)**: Real-time news fetching.
+*   **HTML/CSS/JS**: Vanilla frontend for maximum performance.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request.
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Credits / Acknowledgments
+
+*   **Google Gemini Team** for the powerful AI API.
+*   **DuckDuckGo** for the search capabilities.
+*   **Open Source Community** for the inspiration.
