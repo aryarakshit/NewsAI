@@ -11,9 +11,14 @@ In an era of information overload and polarized media, getting the objective tru
 
 It doesn't just show you the news; it breaks down the bias, summarizes the key points, and most importantly, finds and presents distinct points of view from real, diverse sources. This application is designed for news junkies and critical thinkers who want to escape the echo chamber.
 
+---
+
 ## Demo
 ![News AI App Demo](static/demo2.png)
 ![News AI App Demo](static/demo1.png)
+
+---
+
 ## Installation
 
 1.  **Clone the repository:**
@@ -52,6 +57,8 @@ It doesn't just show you the news; it breaks down the bias, summarizes the key p
 2.  **Open your browser:**
     Navigate to `http://127.0.0.1:5000` to start browsing the news.
 
+---
+
 ## Features
 
 *   **AI-Powered Analysis**: Instantly summarizes articles, detects bias, and assigns a trust score.
@@ -60,12 +67,16 @@ It doesn't just show you the news; it breaks down the bias, summarizes the key p
 *   **Save & Curate**: Bookmark important stories to your personal profile for later reading.
 *   **Responsive Design**: A modern, "Tekina-style" UI that looks great on desktop and mobile.
 
+---
+
 ## Tech Stack / Built With
 
 *   **Python (Flask)**: Backend framework.
 *   **Google Gemini API**: AI analysis and content generation.
 *   **DuckDuckGo Search (ddgs)**: Real-time news fetching.
 *   **HTML/CSS/JS**: Vanilla frontend for maximum performance.
+
+---
 
 ## Contributing
 
@@ -76,9 +87,13 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 4.  Push to the Branch (`git push origin feature/AmazingFeature`)
 5.  Open a Pull Request
 
+---
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+---
 
 ## Credits / Acknowledgments
 
