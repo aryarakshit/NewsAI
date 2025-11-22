@@ -2,6 +2,9 @@
 
 **A smart, AI-powered news aggregator that gives you the full picture with real-time perspectives and bias analysis.**
 
+## Note on AI Assistance
+This project was developed with the assistance of AI tools. While the core logic, architecture, and design decisions were driven by the development team, AI was utilized for code generation, optimization, and debugging. All AI-generated code has been thoroughly reviewed, tested, and modified to ensure it meets our specific functional requirements and quality standards.
+
 ## Description / Overview
 In an era of information overload and polarized media, getting the objective truth is harder than ever. **News AI App** solves this by aggregating the latest headlines and using advanced AI (Gemini) to analyze each story instantly.
 
