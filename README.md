@@ -8,8 +8,8 @@ In an era of information overload and polarized media, getting the objective tru
 It doesn't just show you the news; it breaks down the bias, summarizes the key points, and most importantly, finds and presents distinct points of view from real, diverse sources. This application is designed for news junkies and critical thinkers who want to escape the echo chamber.
 
 ## Demo
-![News AI App Demo](static/demo.png)
-
+![News AI App Demo](static/demo1.png)
+![News AI App Demo](static/demo2.png)
 ## Installation
 
 1.  **Clone the repository:**
